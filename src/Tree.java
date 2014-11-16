@@ -2,6 +2,14 @@ public class Tree {
 	int[] tree = new int[100];
 	private int lastNode = -1;
 	
+	public Tree(){
+	}
+	
+	public Tree(int[] array){
+		for (int i = 0; i < array.length; i++){
+			add(array[i]);
+		}
+	}
 	
 	public void print(){
 		for (int i = 0; i < tree.length; i++){
@@ -21,6 +29,27 @@ public class Tree {
 		
 		tree[lastNode + 1] = insert;
 		lastNode++;
+	}
+	
+	public int remove(int index){
+		int toReturn = -3;
+		
+		try{		
+			toReturn = tree[index];
+		}
+		
+		catch(IndexOutOfBoundsException e){
+			System.out.println("The index was outside of the tree");
+		}
+		
+		for (int i = index; i <= lastNode; i++){
+			tree[i] = tree[i + 1];
+		}
+		
+		lastNode--;
+		
+		return toReturn;
+		
 	}
 	
 	public int removeRoot() throws EmptyTreeException{
