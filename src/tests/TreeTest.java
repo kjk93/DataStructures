@@ -1,7 +1,9 @@
 package tests;
 
 import static org.junit.Assert.*;
+import main.*;
 
+import org.junit.Ignore;
 import org.junit.Test;
 
 public class TreeTest {
@@ -21,13 +23,20 @@ public class TreeTest {
 	@Test
 	public void testTreeIntArray() {
 		int[] testFixed = randomArray(100);
+		int[] testRnd = randomArray();
+		Tree testF = new Tree(testFixed);
+		Tree testR = new Tree(testRnd);
 		
-		assertEquals(testFixed, Tree.Tree(testFixed));
+		assertArrayEquals(testF.getTree(), testFixed);
+		assertArrayEquals(testR.getTree(), testRnd);
 	}
-
+	
+	@Ignore("Test not completed")
 	@Test
 	public void testPrint() {
-		fail("Not yet implemented");
+		int[] testFixed = randomArray(100);
+		System.out.println(printArray(testFixed));
+		
 	}
 
 	@Test
@@ -94,5 +103,16 @@ public class TreeTest {
 		
 		return toReturn;
 	}
-
+	
+	private String printArray(int[] to){
+		String toReturn = "";
+		
+		for (int i = 0; i<to.length; i++){
+			toReturn = toReturn + to[i] + ", ";
+		}
+		
+		toReturn = toReturn + "end";
+		
+		return toReturn;
+	}
 }
