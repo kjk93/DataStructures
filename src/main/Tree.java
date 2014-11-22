@@ -20,7 +20,7 @@ public class Tree {
 	}
 	
 	public void add(int insert){
-		if (lastNode == tree.length){
+		if (lastNode == tree.length - 1){
 			int[] nextTree = new int[tree.length * 2];
 			for (int i = 0; i < tree.length; i++){
 				nextTree[i] = tree[i];
@@ -75,7 +75,11 @@ public class Tree {
 		tree[bIndex] = temp;
 	}
 	
-	public int getRoot(){
+	public int getRoot() throws EmptyTreeException{
+		if (tree.length == 0){
+			throw new EmptyTreeException();
+		}
+		
 		return tree[0];
 	}
 	
